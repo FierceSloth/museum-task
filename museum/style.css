@@ -27,6 +27,7 @@ html {
 }
 
 h1 {
+  color: #ffffff;
   font-family: Forum, sans-serif;
   font-size: 80px;
   font-style: normal;
@@ -34,6 +35,7 @@ h1 {
   line-height: 90px;
   letter-spacing: 5px;
   text-transform: uppercase;
+  margin: 0;
 }
 
 h2 {
@@ -62,6 +64,7 @@ p {
   font-style: normal;
   font-weight: 200;
   line-height: normal;
+  margin: 0;
 }
 
 div {
@@ -109,14 +112,13 @@ header {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: center;
   gap: 25px;
 }
 .header__logo {
   background-image: url(./assets/svg/logo.svg);
   width: 49px;
   height: 26px;
-  background-size: contain; 
+  background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
 }
@@ -139,7 +141,126 @@ header {
   gap: 55px;
 }
 .header__list--item {
-  color: white;
+  color: #fff;
+  font-family: Roboto;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 100;
+  line-height: normal;
+  letter-spacing: 2px;
 }
 
-/* ======================= Main ======================= */
+/* ======================= Welcome ======================= */
+
+.welcome {
+  height: 810px;
+  background-color: #030303;
+}
+
+.welcome__container {
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-image: url(./assets/img/main-photo.png);
+  background-size: auto;
+  background-position: top right;
+  background-repeat: no-repeat;
+}
+.welcome__content {
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 25px;
+  margin-top: 150px;
+}
+.welcome_title {
+  max-width: 600px;
+}
+.welcome__text {
+  color: #fff;
+  font-family: Roboto;
+  font-size: 28px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
+  letter-spacing: 2px;
+}
+.welcome__button {
+  display: inline-block;
+  padding: 24px 66px;
+  border-radius: 10px;
+  background: #710707;
+  margin-top: 50px;
+  color: #fff;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
+  letter-spacing: 2px;
+}
+.welcome__pagination {
+  background-color: #030303;
+  padding: 40px 75px;
+  align-self: flex-end;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  fill: #030303;
+  color: #fff;
+  gap: 55px;
+}
+.welcome__pagination--slides {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.welcome__pagination--slides span {
+  margin: 0 10px;
+  font-family: Roboto;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 400;
+}
+.welcome__pagination--now {
+}
+.welcome__pagination--all {
+}
+
+.slides__text {
+  color: #fff;
+  font-family: Roboto;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 40px; /* 181.818% */
+  text-transform: uppercase;
+}
+
+.welcome__pagination--carousel {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 180px;
+  height: 16px;
+}
+
+.welcome__pagination--button:first-child {
+  display: block;
+  width: 16px;
+  height: 16px;
+  background-color: #d2b183;
+}
+.welcome__pagination--button {
+  display: block;
+  width: 16px;
+  height: 16px;
+  background-color: #ffffff;
+}
+
+.welcome__pagination--arrows {
+  margin-left: 10px ;
+}

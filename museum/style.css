@@ -1,3 +1,13 @@
+/* ======================= Global ======================= */
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -69,4 +79,67 @@ a {
   font-weight: 200;
   line-height: normal;
   letter-spacing: 2px;
+  text-decoration: none;
 }
+
+li {
+  list-style: none;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+/* ======================= Header ======================= */
+
+header {
+  background-color: #030303;
+  height: 150px;
+}
+
+.header__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+}
+
+.header__logo__container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 25px;
+}
+.header__logo {
+  background-image: url(./assets/svg/logo.svg);
+  width: 49px;
+  height: 26px;
+  background-size: contain; 
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.header__logo--title {
+  color: #fff;
+  font-family: Forum;
+  font-size: 28px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+}
+
+.header__list {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 55px;
+}
+.header__list--item {
+  color: white;
+}
+
+/* ======================= Main ======================= */

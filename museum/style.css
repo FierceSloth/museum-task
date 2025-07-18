@@ -46,6 +46,7 @@ h2 {
   line-height: 90px;
   letter-spacing: 5px;
   text-transform: uppercase;
+  margin: 0;
 }
 
 h3 {
@@ -56,6 +57,7 @@ h3 {
   line-height: normal;
   letter-spacing: 5px;
   text-transform: uppercase;
+  margin: 0;
 }
 
 p {
@@ -92,6 +94,19 @@ li {
 ul {
   margin: 0;
   padding: 0;
+}
+.underline {
+  position: relative;
+}
+
+.underline::after {
+  content: "";
+  position: absolute;
+  bottom: -28px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background-color: #710707;
 }
 
 /* ======================= Header ======================= */
@@ -148,6 +163,11 @@ header {
   font-weight: 100;
   line-height: normal;
   letter-spacing: 2px;
+  transition: all 0.3s;
+}
+
+.header__list--item:hover {
+  color: #9d8665;
 }
 
 /* ======================= Welcome ======================= */
@@ -200,6 +220,10 @@ header {
   font-weight: 300;
   line-height: normal;
   letter-spacing: 2px;
+  transition: all 0.5s;
+}
+.welcome__button:hover {
+  background-color: #9d8665;
 }
 .welcome__pagination {
   background-color: #030303;
@@ -224,10 +248,6 @@ header {
   font-size: 22px;
   font-style: normal;
   font-weight: 400;
-}
-.welcome__pagination--now {
-}
-.welcome__pagination--all {
 }
 
 .slides__text {
@@ -259,8 +279,61 @@ header {
   width: 16px;
   height: 16px;
   background-color: #ffffff;
+  transition: all 0.3s ease;
+}
+.welcome__pagination--button:hover {
+  background-color: #9d8665;
+}
+.welcome__pagination--arrows {
+  margin-left: 10px;
 }
 
-.welcome__pagination--arrows {
-  margin-left: 10px ;
+/* ======================= Visiting ======================= */
+
+.visiting {
+}
+.visiting__container {
+}
+.visiting__title {
+  color: #9d8665;
+  margin-bottom: 103px;
+}
+.visiting__card__container {
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 75px;
+  column-gap: 60px;
+  width: 100%;
+}
+.visiting__card {
+  display: block;
+  color: black;
+}
+.card__title {
+  margin-top: 20px;
+  margin-bottom: 22px;
+}
+.card__title::after {
+  bottom: -11px;
+  width: 68%;
+  height: 2px;
+}
+.card__image {
+  width: 440px;
+  height: 285px;
+}
+.card__text {
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 100;
+  line-height: normal;
+  letter-spacing: normal;
+  margin-bottom: 10px;
+}
+.card__text--second {
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 100;
+  line-height: normal;
+  letter-spacing: normal;
 }

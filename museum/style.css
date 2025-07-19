@@ -310,6 +310,7 @@ header {
 .visiting__card {
   display: block;
   color: black;
+  transition: all 0.3s;
 }
 .card__title {
   margin-top: 20px;
@@ -319,6 +320,10 @@ header {
   bottom: -11px;
   width: 68%;
   height: 2px;
+  transition: all 0.3s;
+}
+.visiting__card:hover .card__title::after {
+  width: 100%;
 }
 .card__image {
   width: 440px;
@@ -371,4 +376,71 @@ header {
 }
 .explore__img {
   margin-top: 15px;
+}
+
+/* ======================= Explore ======================= */
+
+.video {
+}
+.video__container {
+}
+.video__secttion--top {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 75px;
+}
+.video__title {
+  color: #9d8665;
+}
+.video__text {
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 38.5px;
+  max-width: 720px;;
+}
+.video__secttion--bottom {
+}
+.video__secttion--bottom iframe {
+  margin-bottom: 40px;
+}
+.video__slider {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.video__carosuel {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.video__pagination {
+  width: 200px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+.video__pagination--dot{
+  display: block;
+  width: 12px;
+  height: 12px;
+  background-color: #999999;
+  border-radius: 100px;
+  transition: all 0.1s;
+}
+.video__pagination--dot:first-child {
+  background-color: #333333;
+}
+.video__pagination--dot:hover{
+  background-color: #710707;
+  transform: scale(1.2)
+}
+.video__pagination--button-left:hover path{
+  fill: #710707;
+}
+.video__pagination--button-right:hover path{
+  fill: #710707;
 }

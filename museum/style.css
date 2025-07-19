@@ -291,17 +291,19 @@ header {
 /* ======================= Visiting ======================= */
 
 .visiting {
-}
-.visiting__container {
+  padding: 75px 0 72px 0;
 }
 .visiting__title {
   color: #9d8665;
   margin-bottom: 103px;
 }
+.visiting__title::after {
+  bottom: -28px;
+}
 .visiting__card__container {
   display: flex;
   flex-wrap: wrap;
-  row-gap: 75px;
+  row-gap: 73px;
   column-gap: 60px;
   width: 100%;
 }
@@ -336,4 +338,37 @@ header {
   font-weight: 100;
   line-height: normal;
   letter-spacing: normal;
+}
+
+/* ======================= Explore ======================= */
+
+.explore__container {
+  display: flex;
+  flex-direction: row;
+  gap: 60px;
+  color: #fff;
+}
+.explore__left {
+  display: flex;
+  flex-direction: column;
+}
+.explore__title {
+  margin-bottom: 103px;
+}
+.explore__text-container {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+.explore__text-container p {
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 38.5px;
+}
+.explore__text-container p span {
+  color: #caaa7d;
+}
+.explore__img {
+  margin-top: 15px;
 }

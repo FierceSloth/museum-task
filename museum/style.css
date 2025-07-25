@@ -15,6 +15,7 @@ html {
 .container {
   margin: 0 auto;
   max-width: 1440px;
+  overflow: hidden;
 }
 
 .section {
@@ -109,6 +110,14 @@ ul {
   background-color: #710707;
 }
 
+.open {
+  left: 0 !important;
+}
+
+body.no-scroll {
+  overflow: hidden;
+}
+
 /* ======================= Header ======================= */
 
 header {
@@ -128,6 +137,7 @@ header {
   flex-direction: row;
   justify-content: space-between;
   gap: 25px;
+  z-index: 100;
 }
 .header__logo {
   background-image: url(./assets/svg/logo.svg);
@@ -146,6 +156,77 @@ header {
   line-height: normal;
   letter-spacing: 5px;
   text-transform: uppercase;
+}
+
+.header__burger {
+  display: none;
+  align-items: center;
+  position: relative;
+  width: 32px;
+  height: 16px;
+  z-index: 50;
+}
+
+.header__burger span {
+  width: 32px;
+  height: 2px;
+  background: white;
+}
+
+.header__burger::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  width: 32px;
+  height: 2px;
+  background: white;
+  transition: all 0.3s;
+}
+
+.header__burger::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 32px;
+  height: 2px;
+  background: white;
+  transition: all 0.3s;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 30;
+}
+
+.header__gallery {
+  display: none;
+}
+
+.overlay.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.header__burger.active span {
+  transform: scale(0);
+}
+
+.header__burger.active::after {
+  bottom: auto;
+  transform: rotate(45deg);
+}
+
+.header__burger.active::before {
+  top: auto;
+  transform: rotate(-45deg);
 }
 
 .header__list {
@@ -173,28 +254,25 @@ header {
 /* ======================= Welcome ======================= */
 
 .welcome {
-  height: 810px;
   background-color: #030303;
 }
 
 .welcome__container {
   height: 100%;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  background-image: url(./assets/img/main-photo.png);
-  background-size: auto;
-  background-position: top right;
-  background-repeat: no-repeat;
+  position: relative;
+  padding-bottom: 3em;
 }
+
 .welcome__content {
   color: #ffffff;
+  position: absolute;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
   gap: 25px;
   margin-top: 150px;
+  z-index: 2;
 }
 .welcome_title {
   max-width: 600px;
@@ -207,6 +285,27 @@ header {
   font-weight: 300;
   line-height: normal;
   letter-spacing: 2px;
+}
+.welcome__slider {
+  margin-left: 440px;
+  position: relative;
+  z-index: 1;
+}
+.welcome__slider--item {
+  max-width: 100%;
+}
+.welcome__slider::before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 1;
+  background: linear-gradient(
+    90deg,
+    #000 0%,
+    rgba(0, 0, 0, 0.5) 16.19%,
+    rgba(0, 0, 0, 0) 30.73%
+  );
 }
 .welcome__button {
   display: inline-block;
@@ -226,15 +325,19 @@ header {
   background-color: #9d8665;
 }
 .welcome__pagination {
+  position: absolute;
+  bottom: 0;
+  right: 0;
   background-color: #030303;
-  padding: 40px 75px;
-  align-self: flex-end;
+  padding: 0 75px;
+  height: 120px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   fill: #030303;
   color: #fff;
   gap: 55px;
+  z-index: 2;
 }
 .welcome__pagination--slides {
   display: flex;
@@ -245,9 +348,9 @@ header {
 .welcome__pagination--slides span {
   margin: 0 10px;
   font-family: Roboto;
-  font-size: 22px;
+  font-size: 20px;
   font-style: normal;
-  font-weight: 400;
+  font-weight: 300;
 }
 
 .slides__text {
@@ -256,7 +359,7 @@ header {
   font-size: 22px;
   font-style: normal;
   font-weight: 400;
-  line-height: 40px; /* 181.818% */
+  line-height: 40px;
   text-transform: uppercase;
 }
 
@@ -264,14 +367,10 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 180px;
-  height: 16px;
+  gap: 20px;
 }
 
 .welcome__pagination--button:first-child {
-  display: block;
-  width: 16px;
-  height: 16px;
   background-color: #d2b183;
 }
 .welcome__pagination--button {
@@ -285,6 +384,9 @@ header {
   background-color: #9d8665;
 }
 .welcome__pagination--arrows {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   margin-left: 10px;
 }
 
@@ -378,6 +480,7 @@ header {
 }
 .explore__img {
   margin-top: 15px;
+  width: 100%;
 }
 
 /* ======================= Explore ======================= */
@@ -401,12 +504,12 @@ header {
   font-style: normal;
   font-weight: 300;
   line-height: 38.5px;
-  max-width: 720px;;
-}
-.video__secttion--bottom {
+  max-width: 720px;
 }
 .video__secttion--bottom iframe {
   margin-bottom: 30px;
+  width: 100%;
+  height: 735px;
 }
 .video__slider {
   display: flex;
@@ -418,6 +521,11 @@ header {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  gap: 42px;
+}
+.video__carosuel iframe {
+  width: 100%;
+  height: 254px;
 }
 .video__pagination {
   width: 200px;
@@ -426,7 +534,7 @@ header {
   align-items: center;
   gap: 20px;
 }
-.video__pagination--dot{
+.video__pagination--dot {
   display: block;
   width: 12px;
   height: 12px;
@@ -437,13 +545,271 @@ header {
 .video__pagination--dot:first-child {
   background-color: #333333;
 }
-.video__pagination--dot:hover{
+.video__pagination--dot:hover {
   background-color: #710707;
-  transform: scale(1.2)
+  transform: scale(1.2);
 }
-.video__pagination--button-left:hover path{
+.video__pagination--button-left:hover path {
   fill: #710707;
 }
-.video__pagination--button-right:hover path{
+.video__pagination--button-right:hover path {
   fill: #710707;
+}
+
+/* ======================= Media ======================= */
+
+@media (max-width: 1480px) {
+  .container {
+    padding: 0 20px;
+  }
+
+  .welcome__slider {
+    margin-left: clamp(
+      290px,
+      calc(
+        440px - (calc(1500px - 100vw) / (calc(1500 - 1025) / calc(440 - 290)))
+      ),
+      440px
+    );
+  }
+
+
+  .welcome__content {
+    margin-top: clamp(50px, calc(150px - ((1480px - 100vw) / 4.56)), 150px);
+  }
+  h1 {
+    font-size: clamp(50px, calc(80px - ((1480px - 100vw) / 15.2)), 80px);
+  }
+  .welcome__text {
+    font-size: clamp(24px, calc(28px - ((1480px - 100vw) / 114)), 28px);
+  }
+  .welcome__button {
+    margin-top: clamp(25px, calc(50px - ((1480px - 100vw) / 18.24)), 50px);
+  }
+}
+
+@media (max-width: 1024px) {
+  header {
+    height: 130px;
+  }
+
+  .header__burger {
+    display: flex;
+  }
+
+  .header__nav {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    height: 100%;
+    width: 55%;
+    top: 50px;
+    bottom: 0;
+    left: -100%;
+    background-color: #000000;
+    z-index: 50;
+    transition: all 0.5s;
+    -webkit-mask-image: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 1) 80%,
+      rgba(0, 0, 0, 0)
+    );
+    mask-image: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 1) 80%,
+      rgba(0, 0, 0, 0)
+    );
+  }
+
+  .header__list {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 115px 0 0 55px;
+    gap: 25px;
+  }
+
+  .header__list--item::after {
+    content: url(./assets/svg/arrow-menu.svg);
+    position: absolute;
+    left: 170px;
+  }
+
+  .welcome__container {
+    padding-bottom: 3.4em;
+  }
+
+  .welcome__content {
+    margin-top: clamp(10px, calc(50px - ((1025px - 100vw) * 0.15625)), 50px);
+  }
+
+  h1 {
+    font-size: clamp(40px, calc(50px - ((1025px - 100vw) / 25.6)), 50px);
+    line-height: clamp(60px, calc(90px - ((1025px - 100vw) / 8.5333)), 90px);
+    min-width: 400px;
+  }
+
+  .welcome__text {
+    font-size: clamp(20px, calc(24px - ((1025px - 100vw) / 64)), 24px);
+  }
+
+  .welcome__button {
+    padding: 18px 45px;
+    margin-top: clamp(0px, calc(25px - ((1025px - 100vw) / 10.24)), 25px);
+    font-size: 20px;
+  }
+
+  .welcome__pagination {
+    width: 100%;
+    height: clamp(100px, calc(120px - ((1025px - 100vw) / 12.8)), 120px);
+    justify-content: flex-end;
+    gap: 45px;
+  }
+
+  .welcome__pagination--button {
+    width: 12px;
+    height: 12px;
+  }
+
+  .slides__text {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  header {
+    height: 110px;
+  }
+
+  .header__nav {
+    -webkit-mask-image: none;
+    mask-image: none;
+    width: 100%;
+    top: 0;
+  }
+
+  .header__list {
+    padding: 115px 0 0 55px;
+  }
+
+  .header__gallery {
+    display: grid;
+    margin: 35px 55px 150px 55px;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    gap: 20px;
+  }
+  .header__img {
+    width: 100%;
+  }
+  .header__img:first-child {
+    grid-column: 1 / 3;
+  }
+  .header__img:nth-child(2) {
+    grid-column: 1 / 2;
+  }
+  .header__img:nth-child(3) {
+    grid-column: 2 / 3;
+  }
+
+  .header__list {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 115px 0 0 55px;
+    gap: 25px;
+  }
+
+  .header__list--item::after {
+    position: absolute;
+    left: 170px;
+  }
+
+  .welcome__container {
+    padding-bottom: 0;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .welcome__content {
+    position: static;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0;
+    margin-bottom: 50px;
+  }
+
+  h1 {
+    font-size: clamp(28px, calc(40px - ((768px - 100vw) / 29)), 40px);
+    line-height: clamp(40px, calc(60px - ((768px - 100vw) / 17.4)), 60px);
+    min-width: 400px;
+    text-align: center;
+  }
+
+  .welcome__text {
+    font-size: clamp(16px, calc(20px - ((768px - 100vw) / 87)), 20px);
+  }
+
+  .welcome__button {
+    display: none;
+  }
+
+  .welcome__slider {
+    margin: 0;
+  }
+
+  .welcome__slider::before {
+    display: none;
+  }
+
+  .welcome__pagination {
+    position: static;
+    width: 100%;
+    height: 100px;
+    justify-content: center;
+    padding: 0;
+  }
+}
+
+@media (max-width: 420px) {
+  header {
+    height: 90px;
+  }
+
+  .header__logo {
+    width: 29px;
+    height: 16px;
+  }
+
+  .header__logo--title {
+    font-size: 16px;
+  }
+
+  .header__list {
+    padding: 115px 0 0 35px;
+  }
+
+  .header__gallery {
+    margin: 35px 35px 150px 35px;
+  }
+
+  .welcome__pagination {
+    position: static;
+    width: 100%;
+    height: 80px;
+    justify-content: center;
+    padding: 0;
+    gap: 25px;
+  }
+
+  .welcome__pagination--button {
+    width: 7px;
+    height: 7px;
+  }
+
+  .welcome__pagination--carousel {
+    gap: 10px;
+  }
+
+  .slides__text {
+    font-size: 16px;
+  }
 }

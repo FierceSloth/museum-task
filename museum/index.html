@@ -39,7 +39,16 @@
             <a href="#contacts" class="header__list--item">Contacts</a>
           </li>
         </ul>
+        <div class="header__gallery">
+          <img src="./assets/img/header-img/header-img-1.jpg" alt="headerGallaryImg" class="header__img">
+          <img src="./assets/img/header-img/header-img-2.jpg" alt="headerGallaryImg" class="header__img">
+          <img src="./assets/img/header-img/header-img-3.jpg" alt="headerGallaryImg" class="header__img">
+        </div>
       </nav>
+      <div class="header__burger">
+        <span></span>
+      </div>
+      <div class="overlay"></div>
     </div>
   </header>
   <main>
@@ -49,6 +58,9 @@
           <h1 class="welcome_title">Welcome <br> to the Louvre</h1>
           <p class="welcome__text">From the castle to the museum</p>
           <a href="https://www.google.com/maps/@48.8618159,2.3366818,3a,75y,81.55h,73.4t/data=!3m7!1e1!3m5!1sAF1QipOVxZQuSy3Bx9T_HpH_7FtBHDTXvI6SF-A10ocT!2e10!3e12!7i5472!8i2736" class="welcome__button">Discover the Louvre</a>
+        </div>
+        <div class="welcome__slider">
+          <img src="./assets/img/main-photo.jpg" alt="slide1" class="welcome__slider--item">
         </div>
         <div class="welcome__pagination">
           <div class="welcome__pagination--slides">
@@ -115,7 +127,7 @@
         </div>
       </div>
     </section>
-    <section class="explore dark-section">
+    <section class="explore dark-section" id="explore">
       <div class="container explore__container">
         <div class="explore__left">
           <h2 class="explore__title underline">Picture explore</h2>
@@ -130,14 +142,14 @@
         </div>
       </div>
     </section>
-    <section class="video section">
+    <section class="video section" id="video">
       <div class="container video__container">
         <div class="video__secttion--top">
           <h2 class="video__title">Video journey</h2>
           <p class="video__text">Enter and visit one of the most famous museums in the world and enjoy masterpieces such as Mona Lisa or Hammurabi's Code</p>
         </div>
         <div class="video__secttion--bottom">
-          <iframe width="1440" height="735" src="https://www.youtube.com/embed/zp1BXPX8jcU?si=OuPvhmYht3MNtHiD" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+          <iframe src="https://www.youtube.com/embed/zp1BXPX8jcU?si=OuPvhmYht3MNtHiD" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
           <div class="video__slider">
             <div class="video__carosuel">
               <iframe width="452" height="254" src="https://www.youtube.com/embed/aWmJ5DgyWPI?si=m4qNWMciKEs0-UiA&amp;controls=0" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
@@ -166,6 +178,37 @@
       </div>
     </section>
   </main>
+
+
+  <script>
+    const burger = document.querySelector('.header__burger');
+    const nav = document.querySelector('.header__nav');
+    const overlay = document.querySelector('.overlay');
+    const body = document.body;
+
+    burger.addEventListener('click', function () {
+      this.classList.toggle('active');
+      nav.classList.toggle('open');
+      overlay.classList.toggle('active');
+      body.classList.toggle('no-scroll');
+    });
+
+    overlay.addEventListener('click', function () {
+      burger.classList.remove('active');
+      nav.classList.remove('open');
+      overlay.classList.remove('active');
+      body.classList.remove('no-scroll');
+    });
+
+    document.querySelectorAll('.header__list a[href^="#"]').forEach(link => {
+      link.addEventListener('click', function () {
+        burger.classList.remove('active');
+        nav.classList.remove('open');
+        overlay.classList.remove('active');
+        body.classList.remove('no-scroll');
+      });
+    });
+  </script>
 </body>
 
 </html>

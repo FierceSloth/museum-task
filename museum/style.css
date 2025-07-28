@@ -569,6 +569,7 @@ header {
 /* ======================= Gallery ======================= */
 
 .gallery {
+  padding: 75px 0 0 0;
   position: relative;
   height: 2125px;
   overflow: hidden;
@@ -730,7 +731,7 @@ input[type="number"] {
   text-align: end;
 }
 .tickets__submit {
-  all:unset;
+  all: unset;
   padding: 10px 38px;
   background-color: #000000;
   color: #ffffff;
@@ -754,6 +755,53 @@ input[type="number"] {
 .asd {
   height: 200vh;
 }
+/* ======================= Contacts ======================= */
+
+.contacts {
+}
+.contacts__container {
+}
+.contacts__title {
+  color: #9d8665;
+  margin-bottom: 103px;
+}
+.contacts__bottom {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+.contacts__bottom--left {
+}
+.contacts__bottom--title {
+  font-family: Roboto;
+  font-size: 28px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  padding-bottom: 50px;
+}
+.contacts__list {
+}
+.contacts__list--item,
+.contacts__list--item a {
+  color: #000;
+  font-family: Roboto;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
+  text-decoration: none;
+  padding-bottom: 25px;
+  letter-spacing: 1px;
+}
+.contacts__bottom--map {
+  background-image: url(./assets/img/map.png);
+  width: 960px;
+  height: auto;
+  background-position: center;
+  aspect-ratio: 960 / 620;
+}
+
 /* ======================= Media ======================= */
 
 @media (max-width: 1480px) {
@@ -893,6 +941,21 @@ input[type="number"] {
   .tickets__total {
     font-size: 28px !important;
   }
+
+  .contacts__title {
+    margin-bottom: clamp(63px, calc(103px - ((1480px - 100vw) / 26.5)), 103px);
+  }
+  .contacts__bottom--title {
+    font-size: clamp(16px, calc(16px + (100vw - 420px) * 0.01132), 28px);
+  }
+  .contacts__bottom--map {
+    width: clamp(694px, calc(694px + (100vw - 1024px) * 0.5833), 960px);
+    height: clamp(454px, calc(454px + (100vw - 1024px) * 0.3632), 620px);
+  }
+  .contacts__list--item,
+  .contacts__list--item a {
+    font-size: clamp(16px, calc(16px + (100vw - 420px) * 0.00566), 22px);
+  }
 }
 
 @media (max-width: 1024px) {
@@ -981,9 +1044,6 @@ input[type="number"] {
     font-size: 20px;
   }
 
-  .video__carosuel iframe {
-    width: 48.6%;
-  }
   .video__text {
     display: none;
   }
@@ -998,13 +1058,29 @@ input[type="number"] {
     width: clamp(220px, calc(304px - ((1024px - 100vw) / 3.095)), 304px);
   }
 
-
   .tickets__img {
     width: clamp(444px, calc(444px + (100vw - 768px)), 700px);
     height: clamp(340px, calc(440px - ((1024px - 100vw) / 2.56)), 440px);
   }
   .tickets__total {
     font-size: 28px !important;
+  }
+
+  .contacts__bottom {
+    flex-direction: column;
+  }
+  .contacts__bottom--title {
+    padding-bottom: 40px;
+  }
+  .contacts__bottom--map {
+    margin-top: 40px;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 728 / 476;
+  }
+  .contacts__list--item,
+  .contacts__list--item a {
+    padding-bottom: 15px;
   }
 }
 
@@ -1119,6 +1195,9 @@ input[type="number"] {
   .video__carosuel {
     gap: 20px;
   }
+  .video__carosuel iframe {
+    width: 48.6%;
+  }
 
   .gallery {
     height: clamp(682px, calc(682px + ((100vw - 420px) * 1.33)), 1145px);
@@ -1144,8 +1223,13 @@ input[type="number"] {
   .gallery__photo--item:nth-child(6) {
     margin-top: 24px;
   }
-  
 
+  .parallax {
+    height: 300px;
+  }
+}
+
+@media (max-width: 748px) {
   .tickets__bottom {
     gap: 40px;
   }
@@ -1169,7 +1253,8 @@ input[type="number"] {
   .tickets__legend--amount {
     margin-bottom: 20px;
   }
-  .tickets__total, .tickets__legend--amount {
+  .tickets__total,
+  .tickets__legend--amount {
     font-size: 16px !important;
     text-align: center;
   }
@@ -1183,10 +1268,6 @@ input[type="number"] {
   .tickets__submit {
     padding: 16px 48px;
     font-size: 16px;
-  }
-
-  .parallax {
-  height: 300px;
   }
 }
 

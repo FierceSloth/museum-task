@@ -199,7 +199,55 @@
         </div>
       </div>
     </section>
-    <section class="section"></section>
+    <section class="tickets section" id="tickets">
+      <div class="container tickets__container">
+        <h2 class="tickets__title underline">Buy tickets</h2>
+        <div class="tickets__bottom">
+          <img class="tickets__img" src="./assets/img/tickets-img.jpg" alt="ticketsImg">
+          <form class="tickets__form">
+            <fieldset class="tickets__fieldset__radio">
+              <legend class="tickets__legend--type">Ticket Type</legend>
+              <ul class="tickets__radio--list">
+                <li class="radio__list--item">
+                  <input type="radio" id="radio1" name="tickets__radio" checked>
+                  <label for="radio1">Permanent exhibition</label>
+                </li>
+                <li class="radio__list--item">
+                  <input type="radio" id="radio2" name="tickets__radio">
+                  <label for="radio2">Temporary exhibition</label>
+                </li>
+                <li class="radio__list--item">
+                  <input type="radio" id="radio3" name="tickets__radio">
+                  <label for="radio3">Combined Admission</label>
+                </li>
+              </ul>
+            </fieldset>
+            <fieldset class="tickets__fieldset__number">
+              <legend class="tickets__legend--amount">Amount</legend>
+              <div class="basic__counter--container counter__container">
+                <label class="counter__label" for="basic__counter--input">Basic 18+</label>
+                <div class="basic__counter counter">
+                  <button class="counter__minus" type="button">—</button>
+                  <input type="number" value="1" id="basic__counter--input" class="counter__input">
+                  <button class="counter__plus" type="button">+</button>
+                </div>
+              </div>
+              <div class="senior__counter--container counter__container">
+                <label class="counter__label" for="senior__counter--input">Senior 65+</label>
+                <div class="senior__counter counter">
+                  <button class="counter__minus" type="button">—</button>
+                  <input type="number" value="1" id="senior__counter--input" class="counter__input">
+                  <button class="counter__plus" type="button">+</button>
+                </div>
+              </div>
+              <p class="tickets__total">Total €220</p>
+              <button class="tickets__submit" type="submit">Buy Now</button>
+            </fieldset>
+          </form>
+        </div>
+      </div>
+    </section>
+    <div class="parallax"></div>
   </main>
 
 

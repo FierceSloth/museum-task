@@ -59,8 +59,14 @@
           <p class="welcome__text">From the castle to the museum</p>
           <a href="https://www.google.com/maps/@48.8618159,2.3366818,3a,75y,81.55h,73.4t/data=!3m7!1e1!3m5!1sAF1QipOVxZQuSy3Bx9T_HpH_7FtBHDTXvI6SF-A10ocT!2e10!3e12!7i5472!8i2736" class="welcome__button">Discover the Louvre</a>
         </div>
-        <div class="welcome__slider">
-          <img src="./assets/img/main-photo.jpg" alt="slide1" class="welcome__slider--item">
+        <div class="welcome__slider--wrapper">
+          <div class="welcome__slider">
+            <img src="./assets/img/welcome-slider/1.jpg" alt="slidePhoto" class="welcome__slider--item">
+            <img src="./assets/img/welcome-slider/2.jpg" alt="slidePhoto" class="welcome__slider--item">
+            <img src="./assets/img/welcome-slider/3.jpg" alt="slidePhoto" class="welcome__slider--item">
+            <img src="./assets/img/welcome-slider/4.jpg" alt="slidePhoto" class="welcome__slider--item">
+            <img src="./assets/img/welcome-slider/5.jpg" alt="slidePhoto" class="welcome__slider--item">
+          </div>
         </div>
         <div class="welcome__pagination">
           <div class="welcome__pagination--slides">
@@ -69,17 +75,15 @@
             <div class="welcome__pagination--all slides__text">05</div>
           </div>
           <div class="welcome__pagination--carousel">
-            <a href="/" class="welcome__pagination--button"></a>
-            <a href="/" class="welcome__pagination--button"></a>
-            <a href="/" class="welcome__pagination--button"></a>
-            <a href="/" class="welcome__pagination--button"></a>
-            <a href="/" class="welcome__pagination--button"></a>
+            <button onclick="swipeToNum(1)" href="/" class="welcome__pagination--button"></button>
+            <button onclick="swipeToNum(2)" href="/" class="welcome__pagination--button"></button>
+            <button onclick="swipeToNum(3)" href="/" class="welcome__pagination--button"></button>
+            <button onclick="swipeToNum(4)" href="/" class="welcome__pagination--button"></button>
+            <button onclick="swipeToNum(5)" href="/" class="welcome__pagination--button"></button>
           </div>
           <div class="welcome__pagination--arrows">
-            <svg width="74" height="8" viewBox="0 0 74 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M68.659 -4.15048e-07C70.3584 1.68661 72.1387 2.91738 74 3.69231L74 4.30769C72.1387 5.10541 70.3584 6.33618 68.659 8L67.2428 8C68.052 6.5641 68.8343 5.47009 69.5896 4.71795L46 4.71795L46 3.28205L69.5896 3.28205C68.8343 2.52991 68.052 1.4359 67.2428 -5.25098e-07L68.659 -4.15048e-07Z" fill="white"/>
-<path d="M5.34104 8C3.64162 6.31339 1.86127 5.08262 0 4.30769V3.69231C1.86127 2.89459 3.64162 1.66382 5.34104 0H6.75723C5.94798 1.4359 5.1657 2.52991 4.4104 3.28205H28V4.71795H4.4104C5.1657 5.47009 5.94798 6.5641 6.75723 8H5.34104Z" fill="white"/>
-            </svg>
+            <button class="welcome__prev--wrapper"><img src="./assets/svg/←.svg" alt="" class="welcome__prev"></button>
+            <button class="welcome__next--wrapper"><img src="./assets/svg/←.svg" alt="" class="welcome__next"></button>
           </div>
         </div>
       </div>
@@ -323,35 +327,7 @@
   </footer>
 
 
-  <script>
-    const burger = document.querySelector('.header__burger');
-    const nav = document.querySelector('.header__nav');
-    const overlay = document.querySelector('.overlay');
-    const body = document.body;
-
-    burger.addEventListener('click', function () {
-      this.classList.toggle('active');
-      nav.classList.toggle('open');
-      overlay.classList.toggle('active');
-      body.classList.toggle('no-scroll');
-    });
-
-    overlay.addEventListener('click', function () {
-      burger.classList.remove('active');
-      nav.classList.remove('open');
-      overlay.classList.remove('active');
-      body.classList.remove('no-scroll');
-    });
-
-    document.querySelectorAll('.header__list a[href^="#"]').forEach(link => {
-      link.addEventListener('click', function () {
-        burger.classList.remove('active');
-        nav.classList.remove('open');
-        overlay.classList.remove('active');
-        body.classList.remove('no-scroll');
-      });
-    });
-  </script>
+  <script src="./index.js"></script>
 </body>
 
 </html>

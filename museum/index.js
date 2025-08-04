@@ -194,3 +194,8 @@ videoDots.forEach((dot, index) => {
 let welcomeInterval = setInterval(() => swipeToRight(welcomeSlider, welcomeSlideSize, welcomeIsSliding, welcomeCurrentSlide, welcomeDots, welcomeSlideText, welcomeSlides.length, true, true), 3000);
 document.querySelector('.welcome__pagination').addEventListener('mouseover', () => clearInterval(welcomeInterval));
 document.querySelector('.welcome__pagination').addEventListener('mouseout', () => welcomeInterval = setInterval(() => swipeToRight(welcomeSlider, welcomeSlideSize, welcomeIsSliding, welcomeCurrentSlide, welcomeDots, welcomeSlideText, welcomeSlides.length, true, true), 3000));
+
+
+document.querySelector('.explore__right input').addEventListener("input", function() {
+  document.querySelector('.before__img').style.width = this.value + '%';
+})

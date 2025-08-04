@@ -499,9 +499,47 @@ header {
 .explore__text-container p span {
   color: #caaa7d;
 }
-.explore__img {
-  margin-top: 15px;
+.explore__right {
+  width: 720px;
+  height: auto;
+  aspect-ratio: 720 / 700;
+  display: flex;
+  background: url(./assets/img/after.jpg) no-repeat;
+  background-position: 0 center;
+  background-size: cover;
+  position: relative;
+  overflow: hidden;
+}
+
+.explore__right input {
+  all: unset;
+  appearance: none;
+  -webkit-appearance: none;
   width: 100%;
+  cursor: col-resize;
+  z-index: 10;
+}
+
+.explore__right input::-webkit-slider-runnable-track {
+  height: 100%;
+}
+
+.explore__right input::-webkit-slider-thumb {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 4px;
+  height: 100%;
+  background-color: #fff;
+}
+
+.before__img {
+  position: absolute;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  background: url(./assets/img/before.jpg) no-repeat;
+  background-position: 0 center;
+  background-size: cover;
 }
 
 /* ======================= Explore ======================= */

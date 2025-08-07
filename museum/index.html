@@ -8,6 +8,10 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Forum&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
   <link rel="icon" href="assets/favicon.ico">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <link href="https://api.mapbox.com/mapbox-gl-js/v3.14.0/mapbox-gl.css" rel="stylesheet">
+  <script src="https://api.mapbox.com/mapbox-gl-js/v3.14.0/mapbox-gl.js"></script>
   <title>Museum</title>
 </head>
 
@@ -217,15 +221,15 @@
               <legend class="tickets__legend--type">Ticket Type</legend>
               <ul class="tickets__radio--list">
                 <li class="radio__list--item">
-                  <input type="radio" id="radio1" name="tickets__radio" checked>
+                  <input type="radio" id="radio1" name="tickets__radio" value="20" checked>
                   <label for="radio1">Permanent exhibition</label>
                 </li>
                 <li class="radio__list--item">
-                  <input type="radio" id="radio2" name="tickets__radio">
+                  <input type="radio" id="radio2" name="tickets__radio" value="25">
                   <label for="radio2">Temporary exhibition</label>
                 </li>
                 <li class="radio__list--item">
-                  <input type="radio" id="radio3" name="tickets__radio">
+                  <input type="radio" id="radio3" name="tickets__radio" value="40">
                   <label for="radio3">Combined Admission</label>
                 </li>
               </ul>
@@ -235,21 +239,21 @@
               <div class="basic__counter--container counter__container">
                 <label class="counter__label" for="basic__counter--input">Basic 18+</label>
                 <div class="basic__counter counter">
-                  <button class="counter__minus" type="button">—</button>
-                  <input type="number" value="1" id="basic__counter--input" class="counter__input">
-                  <button class="counter__plus" type="button">+</button>
+                  <button class="basic__counter__minus counter__minus" type="button">—</button>
+                  <input class="counter__input" type="number" min="0" max="20" value="1" id="basic__counter--input">
+                  <button class="basic__counter__plus counter__plus" type="button">+</button>
                 </div>
               </div>
               <div class="senior__counter--container counter__container">
                 <label class="counter__label" for="senior__counter--input">Senior 65+</label>
                 <div class="senior__counter counter">
-                  <button class="counter__minus" type="button">—</button>
-                  <input type="number" value="1" id="senior__counter--input" class="counter__input">
-                  <button class="counter__plus" type="button">+</button>
+                  <button class="senior__counter__minus counter__minus" type="button">—</button>
+                  <input class="counter__input" type="number" min="0" max="20" value="1" id="senior__counter--input">
+                  <button class="senior__counter__plus counter__plus" type="button">+</button>
                 </div>
               </div>
-              <p class="tickets__total">Total €220</p>
-              <button class="tickets__submit" type="submit">Buy Now</button>
+              <p class="tickets__total">Total €30</p>
+              <button class="tickets__submit" type="button">Buy Now</button>
             </fieldset>
           </form>
         </div>
@@ -268,7 +272,7 @@
               <li class="contacts__list--item">mail: <a href="mailto:info@louvre.fr">info@louvre.fr</a></li>
             </ul>
           </div>
-          <div class="contacts__bottom--map"></div>
+          <div class="contacts__bottom--map" id="map"></div>
         </div>
       </div>
     </section>

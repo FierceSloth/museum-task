@@ -199,3 +199,104 @@ document.querySelector('.welcome__pagination').addEventListener('mouseout', () =
 document.querySelector('.explore__right input').addEventListener("input", function() {
   document.querySelector('.before__img').style.width = this.value + '%';
 })
+
+
+	mapboxgl.accessToken = 'pk.eyJ1IjoiaHV5bmhuZ2EiLCJhIjoiY2xnajV4OGt3MGp3MDNmcDR0MjVuZTQxbiJ9.Tx546eIoBUlgx2UwnVmy4g';
+    const map = new mapboxgl.Map({
+        container: 'map', 
+        style: 'mapbox://styles/mapbox/light-v10',
+        center: [2.3364, 48.86091],
+        zoom: 15.75, 
+    });
+
+    const marker1 = new mapboxgl.Marker({color: 'black'})
+        .setLngLat([2.3364, 48.86091])
+        .addTo(map);
+
+    const marker2 = new mapboxgl.Marker({ color: 'grey'})
+        .setLngLat([2.3397, 48.8607])
+        .addTo(map);
+
+    const marker3 = new mapboxgl.Marker({ color: 'grey'})
+        .setLngLat([2.3330, 48.8619])
+        .addTo(map);
+
+    const marker4 = new mapboxgl.Marker({ color: 'grey'})
+        .setLngLat([2.3365, 48.8625])
+        .addTo(map);
+
+    const marker5 = new mapboxgl.Marker({ color: 'grey'})
+        .setLngLat([2.3333, 48.8602])
+        .addTo(map);
+
+const ticketRadioList = document.querySelectorAll('.radio__list--item input'),
+      ticketBasicInput = document.querySelector('#basic__counter--input'),
+      ticketBasicPlus = document.querySelector('.basic__counter__plus'),
+      ticketBasicMinus = document.querySelector('.basic__counter__minus'),
+      ticketSeniorInput = document.querySelector('#senior__counter--input'),
+      ticketSeniorPlus = document.querySelector('.senior__counter__plus'),
+      ticketSeniorMinus = document.querySelector('.senior__counter__minus'),
+      ticketTotal = document.querySelector('.tickets__total');  
+
+
+let ticketPrice = {
+  value: 20
+}
+let totalPrice = {
+  value: 30
+}
+      
+function counterPlus(counter) {
+  if (counter.value === '20') return
+  counter.value = Number(counter.value) + 1
+}
+function counterMinus(counter) {
+  if (counter.value === '0') return
+  counter.value = Number(counter.value) - 1
+}
+function ticketPriceToOne(list) {
+  for(let radio of list) {
+    if (radio.checked) {
+			ticketPrice.value = Number(radio.value)
+		}
+  }
+}
+function updateTotalPrice() {
+  totalPrice.value = (ticketPrice.value * Number(ticketBasicInput.value)) + ((ticketPrice.value * 0.5) * Number(ticketSeniorInput.value))
+  ticketTotal.innerHTML = `Total €${totalPrice.value}`
+}
+
+
+
+ticketRadioList.forEach(radio => {
+  radio.addEventListener('change', () => {
+    ticketPriceToOne(ticketRadioList);
+    updateTotalPrice();
+  })  
+})
+
+ticketBasicInput.addEventListener('input', () => {
+  updateTotalPrice();
+})
+ticketBasicMinus.addEventListener('click', () => { 
+  counterMinus(ticketBasicInput);
+  updateTotalPrice();
+})
+ticketBasicPlus.addEventListener('click', () => {
+  counterPlus(ticketBasicInput)
+  updateTotalPrice();
+})
+ticketSeniorInput.addEventListener('input', () => {
+  updateTotalPrice();
+})
+ticketSeniorMinus.addEventListener('click', () => {
+  counterMinus(ticketSeniorInput)
+  updateTotalPrice();
+})
+ticketSeniorPlus.addEventListener('click', () => {
+  counterPlus(ticketSeniorInput)
+  updateTotalPrice();
+})
+document.querySelector('.tickets__form').addEventListener('submit', (e) => {
+  e.preventDefault();
+});

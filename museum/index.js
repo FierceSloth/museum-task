@@ -236,16 +236,39 @@ const ticketRadioList = document.querySelectorAll('.radio__list--item input'),
       ticketSeniorInput = document.querySelector('#senior__counter--input'),
       ticketSeniorPlus = document.querySelector('.senior__counter__plus'),
       ticketSeniorMinus = document.querySelector('.senior__counter__minus'),
-      ticketTotal = document.querySelector('.tickets__total');  
+      ticketTotal = document.querySelector('.tickets__total'),
+      ticketButton = document.querySelector('.tickets__submit'),
+      ticketPopUp = document.querySelector('.tickets__popup'),
+      ticketOverlay = document.querySelector('.popup__overlay'),
+      popUpClose = document.querySelector('.popup--close'),
+      popUpDate = document.querySelector('#date'),
+      popUpTime = document.querySelector('#time'),
+      popUpName = document.querySelector('#name'),
+      popUpType = document.querySelector('#type'),
+      popUpBasicInput = document.querySelector('#entry__basic__input'),
+      popUpBasicMinus = document.querySelector('#entry__basic__minus'),
+      popUpBasicPlus = document.querySelector('#entry__basic__plus'),
+      popUpSeniorInput = document.querySelector('#entry__senior__input'),
+      popUpSeniorMinus = document.querySelector('#entry__senior__minus'),
+      popUpSeniorPlus = document.querySelector('#entry__senior__plus'),
+      popUpTotal = document.querySelector('.total--value'),
+      amountTextBasic = document.querySelector('.amount--basic'),
+      amountTextSenior = document.querySelector('.amount--senior');
 
+const today = new Date(),
+      day = String(today.getDate()).padStart(2, '0'),
+      month = String(today.getMonth() + 1).padStart(2, '0'),
+      year = today.getFullYear(),
+      formatted = `${year}-${month}-${day}`; 
 
 let ticketPrice = {
   value: 20
-}
+};
 let totalPrice = {
   value: 30
-}
-      
+};
+popUpDate.min = formatted;
+        
 function counterPlus(counter) {
   if (counter.value === '20') return
   counter.value = Number(counter.value) + 1
@@ -254,8 +277,8 @@ function counterMinus(counter) {
   if (counter.value === '0') return
   counter.value = Number(counter.value) - 1
 }
-function ticketPriceToOne(list) {
-  for(let radio of list) {
+function ticketPriceToOne() {
+  for(let radio of ticketRadioList) {
     if (radio.checked) {
 			ticketPrice.value = Number(radio.value)
 		}
@@ -267,6 +290,43 @@ function updateTotalPrice() {
 }
 
 
+function updatePopUpTypePrice() {
+  document.querySelector('#popup__basic--label').innerHTML = `Basic 18+ (${ticketPrice.value} €)`
+  document.querySelector('#popup__senior--label').innerHTML = `Senior 65+ (${ticketPrice.value / 2} €)`
+
+  document.querySelector('#basic__summary').innerHTML = `Basic (${ticketPrice.value} €)`
+  document.querySelector('#senior__summary').innerHTML = `Senior (${ticketPrice.value / 2} €)`
+}
+function updatePopUpTotal() {
+  amountTextSenior.innerHTML = popUpSeniorInput.value;
+  amountTextBasic.innerHTML = popUpBasicInput.value;
+
+  totalPrice.value = (ticketPrice.value * Number(popUpBasicInput.value)) + ((ticketPrice.value * 0.5) * Number(popUpSeniorInput.value));
+
+  document.querySelector('.popup__basic--total').innerHTML = ticketPrice.value * Number(popUpBasicInput.value) + "€"
+  document.querySelector('.popup__senior--total').innerHTML = (ticketPrice.value * 0.5) * Number(popUpSeniorInput.value) + "€"
+  popUpTotal.innerHTML = `${totalPrice.value} €`
+}
+function linkPopUpValue() {
+  popUpBasicInput.value = ticketBasicInput.value;
+  popUpSeniorInput.value = ticketSeniorInput.value;
+  popUpTotal.innerHTML = `${totalPrice.value} €`
+
+  popUpType.value = String(ticketPrice.value)
+  document.querySelector('.detail__type').innerHTML = whatType();
+}
+function linkTicketsValue() {
+  ticketBasicInput.value = popUpBasicInput.value
+  ticketSeniorInput.value = popUpSeniorInput.value
+  totalPrice.innerHTML = `€${popUpTotal.value}`
+}
+function whatType() {
+  if(popUpType.value == '20') return 'Permanent exhibition'
+  if(popUpType.value == '25') return 'Temporary exhibition'
+  if(popUpType.value == '40') return 'Combined Admission'
+}
+
+
 
 ticketRadioList.forEach(radio => {
   radio.addEventListener('change', () => {
@@ -275,18 +335,33 @@ ticketRadioList.forEach(radio => {
   })  
 })
 
+
 ticketBasicInput.addEventListener('input', () => {
   updateTotalPrice();
 })
+ticketSeniorInput.addEventListener('input', () => {
+  updateTotalPrice();
+})
+popUpDate.addEventListener('input', () => {
+  document.querySelector('.detail__date').innerHTML = `Date: ${popUpDate.value}`;
+})
+popUpTime.addEventListener('input', () => {
+  document.querySelector('.detail__time').innerHTML = `Time: ${popUpTime.value}`;
+})
+popUpType.addEventListener('change', () => {
+  ticketPrice.value = Number(popUpType.value)
+  document.querySelector('.detail__type').innerHTML = whatType();
+  updatePopUpTypePrice();
+  updatePopUpTotal();
+})
+
+
 ticketBasicMinus.addEventListener('click', () => { 
   counterMinus(ticketBasicInput);
   updateTotalPrice();
 })
 ticketBasicPlus.addEventListener('click', () => {
   counterPlus(ticketBasicInput)
-  updateTotalPrice();
-})
-ticketSeniorInput.addEventListener('input', () => {
   updateTotalPrice();
 })
 ticketSeniorMinus.addEventListener('click', () => {
@@ -297,6 +372,44 @@ ticketSeniorPlus.addEventListener('click', () => {
   counterPlus(ticketSeniorInput)
   updateTotalPrice();
 })
-document.querySelector('.tickets__form').addEventListener('submit', (e) => {
-  e.preventDefault();
+
+
+ticketButton.addEventListener('click', () => {
+  ticketPopUp.classList.toggle('open-popup'); 
+  ticketOverlay.classList.toggle('show')
+  body.classList.toggle("no-scroll");
+  linkPopUpValue();
+  updatePopUpTypePrice();
+  updatePopUpTotal()
 });
+popUpClose.addEventListener('click', () => {
+  ticketPopUp.classList.remove('open-popup');
+  ticketOverlay.classList.remove('show');
+  body.classList.remove("no-scroll");
+  linkTicketsValue()
+});
+ticketOverlay.addEventListener('click', () => {
+  ticketPopUp.classList.remove('open-popup');
+  ticketOverlay.classList.remove('show');
+  body.classList.remove("no-scroll");
+  linkTicketsValue()
+});
+
+popUpBasicMinus.addEventListener('click', () => {
+  counterMinus(popUpBasicInput);
+  updatePopUpTotal();
+})
+popUpBasicPlus.addEventListener('click', () => {
+  counterPlus(popUpBasicInput);
+  updatePopUpTotal();
+})
+popUpSeniorMinus.addEventListener('click', () => {
+  counterMinus(popUpSeniorInput);
+  updatePopUpTotal();
+  
+})
+popUpSeniorPlus.addEventListener('click', () => {
+  counterPlus(popUpSeniorInput);
+  updatePopUpTotal();
+})
+

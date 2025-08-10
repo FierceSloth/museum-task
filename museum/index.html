@@ -240,7 +240,7 @@
                 <label class="counter__label" for="basic__counter--input">Basic 18+</label>
                 <div class="basic__counter counter">
                   <button class="basic__counter__minus counter__minus" type="button">—</button>
-                  <input class="counter__input" type="number" min="0" max="20" value="1" id="basic__counter--input">
+                  <input class="counter__input" type="number" min="0" max="20" value="1" id="basic__counter--input" readonly>
                   <button class="basic__counter__plus counter__plus" type="button">+</button>
                 </div>
               </div>
@@ -248,7 +248,7 @@
                 <label class="counter__label" for="senior__counter--input">Senior 65+</label>
                 <div class="senior__counter counter">
                   <button class="senior__counter__minus counter__minus" type="button">—</button>
-                  <input class="counter__input" type="number" min="0" max="20" value="1" id="senior__counter--input">
+                  <input class="counter__input" type="number" min="0" max="20" value="1" id="senior__counter--input" readonly>
                   <button class="senior__counter__plus counter__plus" type="button">+</button>
                 </div>
               </div>
@@ -259,7 +259,9 @@
         </div>
       </div>
     </section>
-    <div class="parallax"></div>
+    <div class="parallax">
+
+    </div>
     <section class="contacts section" id="contacts">
       <div class="container contacts__container">
         <h2 class="contacts__title underline">Contacts</h2>
@@ -275,7 +277,7 @@
           <div class="contacts__bottom--map" id="map"></div>
         </div>
       </div>
-    </section>
+    </section>  
   </main>
   <footer>
     <div class="container footer__container">
@@ -333,7 +335,123 @@
       </div>
     </div>
   </footer>
-
+   
+  <div class="popup__overlay"></div>
+  <div class="tickets__popup">
+    <div class="popup__form__section">
+      <div class="popup__title--wrapper">
+        <img src="./assets/svg/popup-logo.svg" alt="popupLogo" class="title--img">
+        <div class="popup__title">Booking tickets</div>
+      </div>
+      <div class="popup__second--title underline">
+        Tour to Louvre
+      </div>
+      <div class="input__group">
+        <div class="input__icon date">
+          <input type="date" id="date">
+        </div>
+        <div class="input__icon time">
+          <select id="time">
+            <option value="09:00">09:00</option>
+            <option value="09:30">09:30</option>
+            <option value="10:00">10:00</option>
+            <option value="10:30">10:30</option>
+            <option value="11:00">11:00</option>
+            <option value="11:30">11:30</option>
+            <option value="12:00">12:00</option>
+            <option value="12:30">12:30</option>
+            <option value="13:00">13:00</option>
+            <option value="13:30">13:30</option>
+            <option value="14:00">14:00</option>
+            <option value="14:30">14:30</option>
+            <option value="15:00">15:00</option>
+            <option value="15:30">15:30</option>
+            <option value="16:00">16:00</option>
+            <option value="16:30">16:30</option>
+            <option value="17:00">17:00</option>
+            <option value="17:30">17:30</option>
+            <option value="18:00">18:00</option>
+          </select>
+        </div>
+      </div>
+      <div class="input__icon name">
+        <input type="text" placeholder="Name" id="name" minlength="3" maxlength="15">
+      </div>
+      <div class="input__icon email">
+        <input type="email" placeholder="E-mail" id="email">
+      </div>
+      <div class="input__icon phone">
+        <input type="tel" placeholder="Phone" id="phone">
+      </div>  
+      <div class="input__icon type">
+        <select id="type">
+          <option value="20" id="Permanent exhibition">Permanent exhibition</option>
+          <option value="25" id="Temporary exhibition">Temporary exhibition</option>
+          <option value="40" id="Combined Admission">Combined Admission</option>
+        </select>
+      </div>
+      <div class="entry__ticket__section">
+        <div class="entry__ticket__section--title underline">Entry Ticket</div>
+        <div class="entry__ticket__input--icon">
+          <label for="entry__basic__input" id="popup__basic--label">Basic 18+ (20 €)</label>
+          <div class="entry__ticket--counter">
+            <button class="entry__counter__minus counter__button" id="entry__basic__minus">—</button>
+            <input class="entry__ticket__input" type="number" value="1" min="0" max="20" id="entry__basic__input" readonly>
+            <button class="entry__counter__plus counter__button" id="entry__basic__plus">+</button>
+          </div>
+        </div>
+        <div class="entry__ticket__input--icon">
+          <label for="entry__senior__input" id="popup__senior--label">Senior 65+ (10 €)</label>
+          <div class="entry__ticket--counter">
+            <button class="entry__counter__minus counter__button"  id="entry__senior__minus">—</button>
+            <input class="entry__ticket__input" type="number" value="1" min="0" max="20" id="entry__senior__input" readonly>
+            <button class="entry__counter__plus counter__button" id="entry__senior__plus">+</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="popup__summary__section">
+      <img class="popup--close" src="./assets/svg/popup-icons/close.svg" alt="closeButton">
+      <div class="popup__detail">
+        <div class="detail__left">
+          <div class="detail__title">Overview</div>
+          <div class="detail__second--title">Tour to Louvre</div>
+          <ul class="detail__list">
+            <li class="detail__date">
+              Date: —
+            </li>
+            <li class="detail__time">
+              Time: —
+            </li>
+            <li class="detail__type">
+              Temporary exhibition
+            </li>
+          </ul>
+        </div>
+        <img src="./assets/img/popup-img.png" alt="">
+      </div>
+      <div class="popup__summary underline">
+        <div>
+          <div class="amount amount--basic">1</div>
+          <div class="ticket--summary__text" id="basic__summary">Basic (20 €)</div>
+        </div>
+        <div>
+          <div class="popup__basic--total">20 €</div>
+        </div>
+        <div>
+          <div class="amount amount--senior">1</div>
+          <div class="ticket--summary__text" id="senior__summary">Senior (10 €)</div>
+        </div>
+        <div>
+          <div class="popup__senior--total">10 €</div>
+        </div>
+      </div>
+      <div class="popup__total">
+        <div class="total--text">Total:</div>
+        <div class="total--value">30 €</div>
+      </div>
+    </div>  
+  </div>
 
   <script src="./index.js"></script>
 </body>

@@ -244,6 +244,8 @@ const ticketRadioList = document.querySelectorAll('.radio__list--item input'),
       popUpDate = document.querySelector('#date'),
       popUpTime = document.querySelector('#time'),
       popUpName = document.querySelector('#name'),
+      popUpEmail = document.querySelector('#email'),
+      popUpPhone = document.querySelector('#phone'),
       popUpType = document.querySelector('#type'),
       popUpBasicInput = document.querySelector('#entry__basic__input'),
       popUpBasicMinus = document.querySelector('#entry__basic__minus'),
@@ -253,7 +255,8 @@ const ticketRadioList = document.querySelectorAll('.radio__list--item input'),
       popUpSeniorPlus = document.querySelector('#entry__senior__plus'),
       popUpTotal = document.querySelector('.total--value'),
       amountTextBasic = document.querySelector('.amount--basic'),
-      amountTextSenior = document.querySelector('.amount--senior');
+      amountTextSenior = document.querySelector('.amount--senior'),
+      popupButton = document.querySelector('.popup__button');
 
 const today = new Date(),
       day = String(today.getDate()).padStart(2, '0'),
@@ -267,6 +270,9 @@ let ticketPrice = {
 let totalPrice = {
   value: 30
 };
+let isFormIncomplete = {
+  value: false
+}
 popUpDate.min = formatted;
         
 function counterPlus(counter) {
@@ -356,6 +362,84 @@ popUpType.addEventListener('change', () => {
 })
 
 
+popUpName.addEventListener('input', () => {
+  if (popUpName.value.length < 3 || popUpName.value.length > 15) {
+    document.querySelector('#name__error').innerHTML = `Length should be between 3 and 15 characters.`
+    document.querySelector('.name').classList.add('red')
+    isFormIncomplete.value = false
+  }
+  if (popUpName.value.length > 3) {
+    document.querySelector('#name__error').innerHTML = ""
+    document.querySelector('.name').classList.remove('red')
+    isFormIncomplete.value = true
+  }
+  if (/[^a-zA-Zа-яА-ЯёЁ ]/.test(popUpName.value)) {
+    document.querySelector('#name__error').innerHTML = `Special characters are not allowed.`
+    document.querySelector('.name').classList.add('red')
+    isFormIncomplete.value = false
+  }
+})
+popUpEmail.addEventListener('input', () => {
+  let indexOfDog = popUpEmail.value.split('').indexOf('@');
+  if (indexOfDog > 16 || indexOfDog < 3 ) {
+    document.querySelector('#email__error').innerHTML = `Email username must be 3–15 characters.`
+    document.querySelector('.email').classList.add('red')
+    isFormIncomplete.value = false
+  }
+  if (indexOfDog >= 3 ) {
+    document.querySelector('#email__error').innerHTML = ""
+    document.querySelector('.email').classList.remove('red')
+    isFormIncomplete.value = true
+  }
+  if (/[^a-zA-Zа-яА-ЯёЁ@.1-9-_]/.test(popUpEmail.value) || indexOfDog === -1) {
+    document.querySelector('#email__error').innerHTML = `Invalid email. Example: username@example.com.`
+    document.querySelector('.email').classList.add('red')
+    isFormIncomplete.value = false
+  }
+})
+popUpPhone.addEventListener('input', () => {
+  if (popUpPhone.value.length > 10) {
+    document.querySelector('#phone__error').innerHTML = `Phone number must be up to 10 digits.`
+    document.querySelector('.phone').classList.add('red')
+    isFormIncomplete.value = false
+  }
+  if (popUpPhone.value.length <= 10) {
+    document.querySelector('#phone__error').innerHTML = ""
+    document.querySelector('.phone').classList.remove('red')
+    isFormIncomplete.value = true
+  }
+  if (/[^0-9 -]/.test(popUpPhone.value)) {
+    document.querySelector('#phone__error').innerHTML = `Only numbers, spaces, and hyphens are allowed.`
+    document.querySelector('.phone').classList.add('red')
+    isFormIncomplete.value = false
+  }
+})
+popupButton.addEventListener('click', () => {
+  if (popUpName.value.length === 0) {
+    document.querySelector('#name__error').innerHTML = `Required field.`
+    document.querySelector('.name').classList.add('red')
+    return
+  }
+  if (popUpPhone.value.length === 0) {
+    document.querySelector('#phone__error').innerHTML = `Required field.`
+    document.querySelector('.phone').classList.add('red')
+    returnr
+  }
+  if (popUpEmail.value.length === 0) {
+    document.querySelector('#email__error').innerHTML = `Required field.`
+    document.querySelector('.email').classList.add('red')
+    return
+  }
+  if (isFormIncomplete.value) {
+    alert('Form completed successfully')
+    ticketPopUp.classList.remove('open-popup');
+    ticketOverlay.classList.remove('show');
+    body.classList.remove("no-scroll--popup");
+    linkTicketsValue()
+  }
+})
+
+
 ticketBasicMinus.addEventListener('click', () => { 
   counterMinus(ticketBasicInput);
   updateTotalPrice();
@@ -377,7 +461,7 @@ ticketSeniorPlus.addEventListener('click', () => {
 ticketButton.addEventListener('click', () => {
   ticketPopUp.classList.toggle('open-popup'); 
   ticketOverlay.classList.toggle('show')
-  body.classList.toggle("no-scroll");
+  body.classList.toggle("no-scroll--popup");
   linkPopUpValue();
   updatePopUpTypePrice();
   updatePopUpTotal()
@@ -385,7 +469,7 @@ ticketButton.addEventListener('click', () => {
 popUpClose.addEventListener('click', () => {
   ticketPopUp.classList.remove('open-popup');
   ticketOverlay.classList.remove('show');
-  body.classList.remove("no-scroll");
+  body.classList.remove("no-scroll--popup");
   linkTicketsValue()
 });
 ticketOverlay.addEventListener('click', () => {

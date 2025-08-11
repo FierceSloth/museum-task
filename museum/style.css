@@ -117,6 +117,10 @@ body.no-scroll {
   overflow: hidden;
 }
 
+body.no-scroll--popup {
+  overflow: hidden;
+}
+
 /* ======================= Header ======================= */
 
 header {
@@ -139,7 +143,7 @@ header {
   z-index: 100;
 }
 .header__logo {
-  background-image: url(./assets/svg/logo.svg);
+  background-image: url(./assets/svg/main-logo.svg);
   width: 49px;
   height: 26px;
   background-size: contain;
@@ -972,24 +976,33 @@ footer {
 
 .tickets__popup {
   border: 0;
-  width: 1440px;
-  height: 850px;
+  /* width: 1440px; */
   position: fixed;
-  top: 50%;
-  left: -50%;
-  transform: translate(-50%, -50%);
+  left: -100vw;
   background: white;
   z-index: 100;
-  padding: 91px 235px;
-  box-sizing: border-box;
+  /* padding: 70px 235px;
+  box-sizing: border-box; */
   transition: all 0.3s ease;
 }
-
-.tickets__popup.open-popup {
+.popup__container {
+  width: 100%;
+  height: 100%;
+  padding: 70px 235px;
+  width: 1440px;
+  box-sizing: border-box;
   display: flex;
   justify-content: space-between;
   gap: 40px;
+}
+
+.tickets__popup.open-popup {
+  /* display: flex;
+  justify-content: space-between;
+  gap: 40px; */
+  top: 50%;
   left: 50%;
+  transform: translate(-50%, -50%);
   transition: all 0.3s ease;
 }
 .popup__form__section {
@@ -1085,6 +1098,18 @@ footer {
 .type::after {
   content: url(./assets/svg/popup-icons/arrow.svg);
   top: 10px;
+}
+.input__error {
+  position: absolute;
+  color: red;
+  bottom: -20px;
+  left: -2px;
+  padding: 1px;
+  font-size: 15px;
+  font-family: Roboto;
+}
+.input__icon.red {
+  border: 1px solid red;
 }
 .entry__ticket__section {
   border: 1px solid #000;
@@ -1223,7 +1248,8 @@ footer {
   display: flex;
   justify-content: space-between;
 }
-.total--text, .total--value {
+.total--text,
+.total--value {
   font-family: Roboto;
   font-size: 32px;
   font-style: normal;
@@ -1232,6 +1258,44 @@ footer {
 }
 .total--value {
   font-weight: 500;
+  margin-bottom: 15px;
+}
+
+.card--wrapper {
+  width: 100%;
+  height: 241px;
+  position: relative;
+  margin-bottom: 30px;
+}
+.card__bottom {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 362px;
+}
+.card__top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 103;
+  width: 362px;
+}
+.popup__button--wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: end;
+  margin-bottom: 14px;
+}
+.popup__button {
+  all: unset;
+  color: #fff;
+  font-family: Roboto;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  background-color: #710707;
+  padding: 11px 85px;
 }
 
 /* ======================= Media ======================= */
@@ -1396,6 +1460,12 @@ footer {
     margin: 62px 0 50px 0;
     gap: clamp(40px, calc(40px + (100vw - 1024px) * 0.2193), 140px);
   }
+
+  .popup--close {
+    position: absolute;
+    right: 235px;
+    top: 30px;
+  }
 }
 
 @media (max-width: 1024px) {
@@ -1537,6 +1607,30 @@ footer {
   }
   .footer__bottom {
     border-top: 1px solid #666;
+  }
+
+
+  .tickets__popup {
+    width: 590px;
+    height: 95vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+  .popup__container {
+    width: 100%;
+    padding: 80px 30px;
+    flex-direction: column;
+  }
+  .popup__form__section {
+    width: 100%; 
+  }
+  .popup__summary__section {
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 80px;
+  }
+  .popup--close {
+    right: 30px;
   }
 }
 
@@ -1705,6 +1799,10 @@ footer {
   .footer__bottom a:nth-child(2) {
     display: none;
   }
+
+  .tickets__popup {
+    left: -100vw;
+  }
 }
 
 @media (max-width: 748px) {
@@ -1746,6 +1844,54 @@ footer {
   .tickets__submit {
     padding: 16px 48px;
     font-size: 16px;
+  }
+}
+
+@media (max-width: 600px) {
+  .tickets__popup {
+    width: 100%;
+    height: 100vh;
+  }
+  .popup__container {
+    width: 100%;
+    padding: 80px 20px;
+  }
+  .input__group {
+    flex-direction: column;
+    height: auto;
+  }
+  .popup__second--title {
+    margin-bottom: 30px;
+  }
+  .popup__summary__section {
+    padding: 25px 15px;
+  }
+  .summary__img {
+    width: 120px;
+    height: 96px;
+  }
+  .card--wrapper {
+    width: 100%;
+    height: auto;
+    position: relative;
+    margin-bottom: 30px;
+   }
+   .card__top {
+    margin-bottom: 25px;
+    position: relative;
+    width: 100%;
+   }
+   .card__bottom {
+    position: relative;
+    width: 100%;
+   }
+  .popup__summary__section {
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 80px;
+  }
+  .popup--close {
+    right: 30px;
   }
 }
 

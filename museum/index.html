@@ -338,6 +338,7 @@
    
   <div class="popup__overlay"></div>
   <div class="tickets__popup">
+    <div class="popup__container">
     <div class="popup__form__section">
       <div class="popup__title--wrapper">
         <img src="./assets/svg/popup-logo.svg" alt="popupLogo" class="title--img">
@@ -375,13 +376,16 @@
         </div>
       </div>
       <div class="input__icon name">
-        <input type="text" placeholder="Name" id="name" minlength="3" maxlength="15">
+        <input type="text" placeholder="Name" id="name">
+        <span class="input__error" id="name__error"></span>
       </div>
       <div class="input__icon email">
         <input type="email" placeholder="E-mail" id="email">
+        <span class="input__error" id="email__error"></span>
       </div>
       <div class="input__icon phone">
         <input type="tel" placeholder="Phone" id="phone">
+        <span class="input__error" id="phone__error"></span>
       </div>  
       <div class="input__icon type">
         <select id="type">
@@ -428,7 +432,7 @@
             </li>
           </ul>
         </div>
-        <img src="./assets/img/popup-img.png" alt="">
+        <img class="summary__img" src="./assets/img/popup-img.png" alt="">
       </div>
       <div class="popup__summary underline">
         <div>
@@ -450,7 +454,15 @@
         <div class="total--text">Total:</div>
         <div class="total--value">30 €</div>
       </div>
+      <div class="card--wrapper">
+        <img class="card__top" src="./assets/img/card-top.svg" alt="cardTop">
+        <img class="card__bottom" src="./assets/img/card-bottom.svg" alt="cardBottom">
+      </div>
+      <div class="popup__button--wrapper">
+        <button class="popup__button">Book</button>
+      </div>
     </div>  
+    </div>
   </div>
 
   <script src="./index.js"></script>

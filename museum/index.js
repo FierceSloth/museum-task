@@ -475,7 +475,7 @@ popUpClose.addEventListener('click', () => {
 ticketOverlay.addEventListener('click', () => {
   ticketPopUp.classList.remove('open-popup');
   ticketOverlay.classList.remove('show');
-  body.classList.remove("no-scroll");
+  body.classList.remove("no-scroll--popup");
   linkTicketsValue()
 });
 

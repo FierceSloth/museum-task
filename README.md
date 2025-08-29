@@ -1,6 +1,6 @@
 # 🏛️ Louvre Museum Website  
 
-[🌐 View the project]([https://your-deploy-link-here](https://fiercesloth.github.io/museum-task/museum/))  
+[🌐 View the project](https://fiercesloth.github.io/museum-task/museum/)  
 
 **Louvre Museum Website** is a responsive landing page created as part of **[RS School](https://rs.school/) Stage#0**.  
 The project was built with **pure HTML, CSS, and JavaScript**, following a given Figma design mockup.  

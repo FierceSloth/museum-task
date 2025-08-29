@@ -1,28 +1,39 @@
-# Museum Task
+# 🏛️ Louvre Museum Website  
 
-**Deploy:** [https://fiercesloth.github.io/museum-task/museum/](https://fiercesloth.github.io/museum-task/museum/)
+[🌐 View the project]([https://your-deploy-link-here](https://fiercesloth.github.io/museum-task/museum/))  
 
----
-
-## 📄 Description
-
-This project was completed as part of **Stage 0** of the [RS School](https://rs.school/) course.
-
-The task was to create a responsive "Museum" webpage according to the provided design, implementing adaptive layout, interactive sections, and functionality described in the technical requirements.
+**Louvre Museum Website** is a responsive landing page created as part of **[RS School](https://rs.school/) Stage#0**.  
+The project was built with **pure HTML, CSS, and JavaScript**, following a given Figma design mockup.  
 
 ---
 
-## 🚀 Deploy
+## 📖 About the project  
+- Fully responsive website layout.  
+- Built strictly according to the Figma design.  
+- Implemented interactive elements to make the experience engaging.  
+- No frameworks or external UI libraries — only native HTML, CSS, and JavaScript.  
 
-The project is available here:  
-➡️ **[Open Website](https://fiercesloth.github.io/museum-task/museum/)**
+---
+
+## 🎮 Functionality  
+- Infinite image slider on the main screen.  
+- Before/after comparison slider.  
+- Ticket calculator with dynamic pricing and popup modal.  
+- Interactive map integration using **Mapbox API**.  
 
 ---
 
-## 🛠 Technologies
-
-- HTML5  
-- CSS3 (responsive design)  
-- JavaScript (interactivity)  
+## ✨ Features  
+- Pixel-perfect responsive design  
+- Clean semantic HTML5  
+- CSS3 animations and transitions  
+- Native JavaScript for interactivity  
+- Works across modern browsers and devices  
 
 ---
+
+## 🛠️ Tech Stack  
+- **HTML5** — semantic structure  
+- **CSS3** — responsive layout and animations  
+- **Vanilla JavaScript (ES6)** — interactive logic  
+- **Mapbox** — embedded interactive map  

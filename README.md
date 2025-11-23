@@ -1,4 +1,6 @@
 # 🏛️ Louvre Museum Website  
+<img width="1902" height="950" alt="image" src="https://github.com/user-attachments/assets/b30e8d9e-bc30-4e44-822c-9ce9fac72815" />
+
 
 [🌐 View the project](https://fiercesloth.github.io/museum-task/museum/)  
 
